@@ -14,10 +14,10 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
-import { api } from "@/axios/api";
+import { api } from "@/api/api";
 export default {
   computed: {
-    ...mapState("modal", ["catalogueItem"])
+    ...mapState("modal", ["catalogueItem"]),
   },
   methods: {
     ...mapMutations("table", ["setTableData", "setTableColumns"]),
@@ -26,20 +26,20 @@ export default {
     deleteCatalogueItem() {
       api
         .deleteCatalogueItem(this.catalogueItem.idKataloga, {
-          rbStavke: this.catalogueItem.rbStavke
+          rbStavke: this.catalogueItem.rbStavke,
         })
-        .then(res => {
+        .then((res) => {
           console.log(res);
           this.addNotification({
             type: "is-success",
             message:
               "Uspešno ste obrisali stavku kataloga sa šifrom " +
-              this.catalogueItem.idKataloga
+              this.catalogueItem.idKataloga,
           });
 
           api
             .getAllCatalogueItems()
-            .then(res => {
+            .then((res) => {
               this.setTableColumns(res.data.tableColumns);
               this.setTableData(res.data.tableData);
             })
@@ -47,14 +47,14 @@ export default {
 
           this.closeModal();
         })
-        .catch(error => {
+        .catch((error) => {
           this.addNotification({
             type: "is-danger",
-            message: error.response.data.message
+            message: error.response.data.message,
           });
         });
-    }
-  }
+    },
+  },
 };
 </script>
 

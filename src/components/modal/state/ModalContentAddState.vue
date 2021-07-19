@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import { api } from "@/axios/api";
+import { api } from "@/api/api";
 import { mapMutations } from "vuex";
 
 export default {
@@ -67,8 +67,8 @@ export default {
         idProizvoda: null,
         idSkladisneJedinice: null,
         datumPromene: null,
-        kolicina: null
-      }
+        kolicina: null,
+      },
     };
   },
   methods: {
@@ -82,12 +82,12 @@ export default {
         .then(() => {
           this.addNotification({
             type: "is-success",
-            message: "Uspešno ste uneli novu kolicinu "
+            message: "Uspešno ste uneli novu kolicinu ",
           });
 
           api
             .getAllStates()
-            .then(res => {
+            .then((res) => {
               this.setTableColumns(res.data.tableColumns);
               this.setTableData(res.data.tableData);
             })
@@ -95,10 +95,10 @@ export default {
 
           this.closeModal();
         })
-        .catch(error => {
+        .catch((error) => {
           this.addNotification({
             type: "is-danger",
-            message: error.response.data.message
+            message: error.response.data.message,
           });
         });
     },
@@ -115,8 +115,8 @@ export default {
       if (this.price.kolicina === "") {
         this.price.kolicina = null;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

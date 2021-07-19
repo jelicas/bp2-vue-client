@@ -72,7 +72,7 @@
       </div>
     </div>
 
-    <div style="display:flex;">
+    <div style="display: flex">
       <div class="field">
         <label class="label">Naziv banke</label>
         <div class="control">
@@ -85,7 +85,7 @@
         </div>
       </div>
 
-      <div class="field" style="margin-left: auto;">
+      <div class="field" style="margin-left: auto">
         <label class="label">Broj računa</label>
         <div class="control">
           <input
@@ -119,7 +119,7 @@
 </template>
 
 <script>
-import { api } from "@/axios/api";
+import { api } from "@/api/api";
 import { mapMutations } from "vuex";
 
 export default {
@@ -134,8 +134,8 @@ export default {
         maticniBroj: null,
         nazivBanke: null,
         brojRacuna: null,
-        telefon: null
-      }
+        telefon: null,
+      },
     };
   },
   methods: {
@@ -149,12 +149,12 @@ export default {
         .then(() => {
           this.addNotification({
             type: "is-success",
-            message: "Uspešno ste uneli novog dobavljaca "
+            message: "Uspešno ste uneli novog dobavljaca ",
           });
 
           api
             .getAllSuppliers()
-            .then(res => {
+            .then((res) => {
               this.setTableColumns(res.data.tableColumns);
               this.setTableData(res.data.tableData);
             })
@@ -162,10 +162,10 @@ export default {
 
           this.closeModal();
         })
-        .catch(error => {
+        .catch((error) => {
           this.addNotification({
             type: "is-danger",
-            message: error.response.data.message
+            message: error.response.data.message,
           });
         });
     },
@@ -197,8 +197,8 @@ export default {
       if (this.supplier.telefon === "") {
         this.supplier.telefon = null;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

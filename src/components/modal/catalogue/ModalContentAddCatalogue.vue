@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import { api } from "@/axios/api";
+import { api } from "@/api/api";
 import { mapMutations } from "vuex";
 
 export default {
@@ -67,8 +67,8 @@ export default {
         idKataloga: null,
         datum: null,
         rb: null,
-        idDobavljaca: null
-      }
+        idDobavljaca: null,
+      },
     };
   },
   methods: {
@@ -82,12 +82,12 @@ export default {
         .then(() => {
           this.addNotification({
             type: "is-success",
-            message: "Uspešno ste uneli novi katalog "
+            message: "Uspešno ste uneli novi katalog ",
           });
 
           api
             .getAllCatalogues()
-            .then(res => {
+            .then((res) => {
               this.setTableColumns(res.data.tableColumns);
               this.setTableData(res.data.tableData);
             })
@@ -95,10 +95,10 @@ export default {
 
           this.closeModal();
         })
-        .catch(error => {
+        .catch((error) => {
           this.addNotification({
             type: "is-danger",
-            message: error.response.data.message
+            message: error.response.data.message,
           });
         });
     },
@@ -112,8 +112,8 @@ export default {
       if (this.catalogue.idDobavljaca === "") {
         this.catalogue.idDobavljaca = null;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

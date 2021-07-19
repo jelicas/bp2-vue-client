@@ -58,19 +58,19 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
-import { api } from "@/axios/api";
+import { api } from "@/api/api";
 
 export default {
   data() {
     return {
-      id: null
+      id: null,
     };
   },
   created() {
     this.id = this.catalogue.idKataloga;
   },
   computed: {
-    ...mapState("modal", ["catalogue"])
+    ...mapState("modal", ["catalogue"]),
   },
   methods: {
     ...mapMutations("table", ["setTableData", "setTableColumns"]),
@@ -80,16 +80,16 @@ export default {
       this.transformCatalogue();
       api
         .editCatalogue(this.id, { ...this.catalogue })
-        .then(res => {
+        .then((res) => {
           console.log(res);
           this.addNotification({
             type: "is-success",
-            message: "Uspešno ste izmenili katalog sa šifrom " + this.id
+            message: "Uspešno ste izmenili katalog sa šifrom " + this.id,
           });
 
           api
             .getAllCatalogues()
-            .then(res => {
+            .then((res) => {
               this.setTableColumns(res.data.tableColumns);
               this.setTableData(res.data.tableData);
             })
@@ -97,10 +97,10 @@ export default {
 
           this.closeModal();
         })
-        .catch(error => {
+        .catch((error) => {
           this.addNotification({
             type: "is-danger",
-            message: error.response.data.message
+            message: error.response.data.message,
           });
         });
     },
@@ -114,8 +114,8 @@ export default {
       if (this.catalogue.idDobavljaca === "") {
         this.catalogue.idDobavljaca = null;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

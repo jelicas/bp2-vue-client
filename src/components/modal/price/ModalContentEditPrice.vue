@@ -46,13 +46,13 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
-import { api } from "@/axios/api";
+import { api } from "@/api/api";
 
 export default {
   data() {
     return {
       id: null,
-      datumPromene: null
+      datumPromene: null,
     };
   },
   created() {
@@ -60,7 +60,7 @@ export default {
     this.datumPromene = this.price.datumPromene;
   },
   computed: {
-    ...mapState("modal", ["price"])
+    ...mapState("modal", ["price"]),
   },
   methods: {
     ...mapMutations("table", ["setTableData", "setTableColumns"]),
@@ -71,18 +71,18 @@ export default {
       api
         .editPrice(this.id, {
           datumPromene: this.datumPromene,
-          cena: this.price.cena
+          cena: this.price.cena,
         })
-        .then(res => {
+        .then((res) => {
           console.log(res);
           this.addNotification({
             type: "is-success",
-            message: "Uspešno ste izmenili cenu proizvoda sa šifrom " + this.id
+            message: "Uspešno ste izmenili cenu proizvoda sa šifrom " + this.id,
           });
 
           api
             .getAllPrices()
-            .then(res => {
+            .then((res) => {
               this.setTableColumns(res.data.tableColumns);
               this.setTableData(res.data.tableData);
             })
@@ -90,10 +90,10 @@ export default {
 
           this.closeModal();
         })
-        .catch(error => {
+        .catch((error) => {
           this.addNotification({
             type: "is-danger",
-            message: error.response.data.message
+            message: error.response.data.message,
           });
         });
     },
@@ -107,8 +107,8 @@ export default {
       if (this.price.cena === "") {
         this.price.cena = null;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

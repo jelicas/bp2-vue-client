@@ -4,7 +4,7 @@
       <ul>
         <template v-for="(tab, i) in tabs">
           <li
-            @click="selectTab(i)"
+            @click="populateDataForSelectedTab(i)"
             :class="{ 'is-active': selectedTab == i }"
             :key="i"
           >
@@ -29,24 +29,23 @@
 
 <script>
 import Table from "@/components/Table";
-import { api } from "@/axios/api";
+import { api } from "@/api/api";
 import { mapMutations } from "vuex";
 
 export default {
   props: {
-    tabs: Array
+    tabs: Array,
   },
   components: {
-    Table
+    Table,
   },
   data() {
     return {
-      selectedTab: 0
+      selectedTab: 0,
     };
   },
-
   created() {
-    this.selectTab(this.selectedTab);
+    this.populateDataForSelectedTab(this.selectedTab);
   },
   methods: {
     ...mapMutations("table", ["setTableData", "setTableColumns"]),
@@ -61,15 +60,14 @@ export default {
       "setCatalogue",
       "setCatalogueItem",
       "setEmployee",
-      "setItemProduct"
+      "setItemProduct",
     ]),
-    selectTab(i) {
+    populateDataForSelectedTab(i) {
       switch (i) {
         case 0:
           api
             .getAllProducts()
-            .then(res => {
-              console.log(res);
+            .then((res) => {
               this.setTableColumns(res.data.tableColumns);
               this.setTableData(res.data.tableData);
             })
@@ -78,7 +76,7 @@ export default {
         case 1:
           api
             .getAllDrugs()
-            .then(res => {
+            .then((res) => {
               this.setTableColumns(res.data.tableColumns);
               this.setTableData(res.data.tableData);
             })
@@ -87,7 +85,7 @@ export default {
         case 2:
           api
             .getAllTypesOfPackages()
-            .then(res => {
+            .then((res) => {
               this.setTableColumns(res.data.tableColumns);
               this.setTableData(res.data.tableData);
             })
@@ -96,7 +94,7 @@ export default {
         case 3:
           api
             .getAllPrices()
-            .then(res => {
+            .then((res) => {
               this.setTableColumns(res.data.tableColumns);
               this.setTableData(res.data.tableData);
             })
@@ -105,7 +103,7 @@ export default {
         case 4:
           api
             .getAllStates()
-            .then(res => {
+            .then((res) => {
               this.setTableColumns(res.data.tableColumns);
               this.setTableData(res.data.tableData);
             })
@@ -114,7 +112,7 @@ export default {
         case 5:
           api
             .getAllSuppliers()
-            .then(res => {
+            .then((res) => {
               this.setTableColumns(res.data.tableColumns);
               this.setTableData(res.data.tableData);
             })
@@ -123,7 +121,7 @@ export default {
         case 6:
           api
             .getAllEmployees()
-            .then(res => {
+            .then((res) => {
               this.setTableColumns(res.data.tableColumns);
               this.setTableData(res.data.tableData);
             })
@@ -132,7 +130,7 @@ export default {
         case 7:
           api
             .getAllCatalogues()
-            .then(res => {
+            .then((res) => {
               this.setTableColumns(res.data.tableColumns);
               this.setTableData(res.data.tableData);
             })
@@ -141,7 +139,7 @@ export default {
         case 8:
           api
             .getAllCatalogueItems()
-            .then(res => {
+            .then((res) => {
               this.setTableColumns(res.data.tableColumns);
               this.setTableData(res.data.tableData);
             })
@@ -150,7 +148,7 @@ export default {
         case 9:
           api
             .getAllItemProducts()
-            .then(res => {
+            .then((res) => {
               this.setTableColumns(res.data.tableColumns);
               this.setTableData(res.data.tableData);
             })
@@ -163,13 +161,13 @@ export default {
     addRow() {
       switch (this.selectedTab) {
         case 0:
-          this.showModal("ModalContentAddProduct");
+          this.showModal("product/ModalContentAddProduct");
           break;
         case 1:
-          this.showModal("ModalContentAddDrug");
+          this.showModal("drug/ModalContentAddDrug");
           break;
         case 2:
-          this.showModal("ModalContentAddPackage");
+          this.showModal("package/ModalContentAddPackage");
           break;
         case 3:
           this.showModal("price/ModalContentAddPrice");
@@ -197,16 +195,15 @@ export default {
     editRow(row) {
       switch (this.selectedTab) {
         case 0:
-          this.showModal("ModalContentEditProduct");
-          console.log(row);
+          this.showModal("product/ModalContentEditProduct");
           this.setProduct(row);
           break;
         case 1:
-          this.showModal("ModalContentEditDrug");
+          this.showModal("drug/ModalContentEditDrug");
           this.setDrug(row);
           break;
         case 2:
-          this.showModal("ModalContentEditPackage");
+          this.showModal("package/ModalContentEditPackage");
           this.setPackage(row);
           break;
         case 3:
@@ -242,15 +239,15 @@ export default {
     deleteRow(row) {
       switch (this.selectedTab) {
         case 0:
-          this.showModal("ModalContentDeleteProduct");
+          this.showModal("product/ModalContentDeleteProduct");
           this.setProduct(row);
           break;
         case 1:
-          this.showModal("ModalContentDeleteDrug");
+          this.showModal("drug/ModalContentDeleteDrug");
           this.setDrug(row);
           break;
         case 2:
-          this.showModal("ModalContentDeletePackage");
+          this.showModal("package/ModalContentDeletePackage");
           this.setPackage(row);
           break;
         case 3:
@@ -282,8 +279,8 @@ export default {
           this.setItemProduct(row);
           break;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -7,7 +7,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="drug.idLeka"
+          v-model="drug.drugId"
         />
       </div>
     </div>
@@ -19,7 +19,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="drug.dozaPoPakovanju"
+          v-model="drug.dosePerPackage"
         />
       </div>
     </div>
@@ -31,7 +31,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="drug.komadPoPakovanju"
+          v-model="drug.piecesPerPackage"
         />
       </div>
     </div>
@@ -55,7 +55,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="drug.idTipaPakovanja"
+          v-model="drug.packageId"
         />
       </div>
 
@@ -66,7 +66,7 @@
             class="input"
             type="text"
             placeholder="Text input"
-            v-model="drug.idJediniceMere"
+            v-model="drug.measurementUnitId"
           />
         </div>
       </div>
@@ -81,20 +81,20 @@
 </template>
 
 <script>
-import { api } from "@/axios/api";
+import { api } from "@/api/api";
 import { mapMutations } from "vuex";
 
 export default {
   data() {
     return {
       drug: {
-        idLeka: null,
-        dozaPoPakovanju: null,
-        komadPoPakovanju: null,
+        drugId: null,
+        dosePerPackage: null,
+        piecesPerPackage: null,
         jkl: null,
-        idJediniceMere: null,
-        idTipaPakovanja: null
-      }
+        measurementUnitId: null,
+        packageId: null,
+      },
     };
   },
   methods: {
@@ -102,18 +102,18 @@ export default {
     ...mapMutations("modal", ["closeModal"]),
     ...mapMutations("notification", ["addNotification"]),
     addDrug() {
-      this.transformDrug();
+      this.setToNullEmptyDrugFields();
       api
         .addDrug({ ...this.drug })
         .then(() => {
           this.addNotification({
             type: "is-success",
-            message: "Uspešno ste uneli novi lek "
+            message: "Uspešno ste uneli novi lek ",
           });
 
           api
             .getAllDrugs()
-            .then(res => {
+            .then((res) => {
               this.setTableColumns(res.data.tableColumns);
               this.setTableData(res.data.tableData);
             })
@@ -121,36 +121,36 @@ export default {
 
           this.closeModal();
         })
-        .catch(error => {
+        .catch((error) => {
           this.addNotification({
             type: "is-danger",
-            message: error.response.data.message
+            message: error.response.data.message,
           });
         });
     },
-    transformDrug() {
-      if (this.drug.dozaPoPakovanju === "") {
-        this.drug.dozaPoPakovanju = null;
+    setToNullEmptyDrugFields() {
+      if (this.drug.dosePerPackage === "") {
+        this.drug.dosePerPackage = null;
       }
-      if (this.drug.idLeka === "") {
-        this.drug.idLeka = null;
+      if (this.drug.drugId === "") {
+        this.drug.drugId = null;
       }
-      if (this.drug.komadPoPakovanju === "") {
-        this.drug.komadPoPakovanju = null;
+      if (this.drug.piecesPerPackage === "") {
+        this.drug.piecesPerPackage = null;
       }
       if (this.drug.jkl === "") {
         this.drug.jkl = null;
       }
 
-      if (this.drug.idJediniceMere === "") {
-        this.drug.idJediniceMere = null;
+      if (this.drug.measurementUnitId === "") {
+        this.drug.measurementUnitId = null;
       }
 
-      if (this.drug.idTipaPakovanja === "") {
-        this.drug.idTipaPakovanja = null;
+      if (this.drug.packageId === "") {
+        this.drug.packageId = null;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

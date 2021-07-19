@@ -7,75 +7,75 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="drug.idLeka"
+          v-model="product.idProizvoda"
           readonly
         />
       </div>
     </div>
 
     <div class="field">
-      <label class="label">Doza</label>
+      <label class="label">Naziv</label>
       <div class="control">
         <input
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="drug.dozaPoPakovanju"
+          v-model="product.nazivProizvoda"
         />
       </div>
     </div>
 
     <div class="field">
-      <label class="label">Broj komada</label>
+      <label class="label">Trenutna cena</label>
       <div class="control">
         <input
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="drug.komadPoPakovanju"
+          v-model="product.trenutnaCena"
         />
       </div>
     </div>
 
     <div class="field">
-      <label class="label">JKL</label>
+      <label class="label">Količina</label>
       <div class="control">
         <input
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="drug.jkl"
+          v-model="product.kolicina"
         />
       </div>
     </div>
 
     <div class="field">
-      <label class="label">Šifra tipa pakovanja</label>
+      <label class="label">Naziv tipa pakovanja</label>
       <div class="control">
         <input
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="drug.idTipaPakovanja"
+          v-model="product.nazivTipaPakovanja"
         />
       </div>
+    </div>
 
-      <div class="field">
-        <label class="label">Šifra jedinice mere</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Text input"
-            v-model="drug.idJediniceMere"
-          />
-        </div>
+    <div class="field">
+      <label class="label">Šifra fabrike</label>
+      <div class="control">
+        <input
+          class="input"
+          type="text"
+          placeholder="Text input"
+          v-model="product.idFabrike"
+        />
       </div>
     </div>
 
     <div class="field is-grouped">
       <div class="control">
-        <button class="button is-link" @click="editDrug">Izmeni</button>
+        <button class="button is-link" @click="editProduct">Izmeni</button>
       </div>
     </div>
   </div>
@@ -83,75 +83,69 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
-import { api } from "@/axios/api";
-
+import { api } from "@/api/api";
 export default {
   data() {
     return {
-      id: null
+      id: null,
     };
   },
   created() {
-    this.id = this.drug.idLeka;
+    this.id = this.product.idProizvoda;
   },
   computed: {
-    ...mapState("modal", ["drug"])
+    ...mapState("modal", ["product"]),
   },
   methods: {
     ...mapMutations("table", ["setTableData", "setTableColumns"]),
     ...mapMutations("modal", ["closeModal"]),
     ...mapMutations("notification", ["addNotification"]),
-    editDrug() {
-      this.transformDrug();
+    editProduct() {
+      this.transformProduct();
       api
-        .editDrug(this.id, { ...this.drug })
-        .then(res => {
+        .editProduct(this.id, { ...this.product })
+        .then((res) => {
           console.log(res);
           this.addNotification({
             type: "is-success",
-            message: "Uspešno ste izmenili lek sa šifrom " + this.id
+            message: "Uspešno ste izmenili proizvod sa šifrom " + this.id,
           });
 
           api
-            .getAllDrugs()
-            .then(res => {
+            .getAllProducts()
+            .then((res) => {
+              console.log(res);
               this.setTableColumns(res.data.tableColumns);
               this.setTableData(res.data.tableData);
             })
             .catch(() => {});
-
           this.closeModal();
         })
-        .catch(error => {
+        .catch((error) => {
           this.addNotification({
             type: "is-danger",
-            message: error.response.data.message
+            message: error.response.data.message,
           });
         });
     },
-    transformDrug() {
-      if (this.drug.dozaPoPakovanju === "") {
-        this.drug.dozaPoPakovanju = null;
+    transformProduct() {
+      if (this.product.idProizvoda === "") {
+        this.product.idProizvoda = null;
       }
-      if (this.drug.idLeka === "") {
-        this.drug.idLeka = null;
+      if (this.product.nazivProizvoda === "") {
+        this.product.nazivProizvoda = null;
       }
-      if (this.drug.komadPoPakovanju === "") {
-        this.drug.komadPoPakovanju = null;
+      if (this.product.trenutnaCena === "") {
+        this.product.trenutnaCena = null;
       }
-      if (this.drug.jkl === "") {
-        this.drug.jkl = null;
+      if (this.product.kolicina === "") {
+        this.product.kolicina = null;
       }
-
-      if (this.drug.idJediniceMere === "") {
-        this.drug.idJediniceMere = null;
+      if (this.product.nazivTipaPakovanja === "") {
+        this.product.nazivTipaPakovanja = null;
       }
-
-      if (this.drug.idTipaPakovanja === "") {
-        this.drug.idTipaPakovanja = null;
-      }
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { api } from "@/axios/api";
+import { api } from "@/api/api";
 import { mapMutations } from "vuex";
 
 export default {
@@ -54,8 +54,8 @@ export default {
       itemProduct: {
         idKataloga: null,
         rbStavke: null,
-        idProizvoda: null
-      }
+        idProizvoda: null,
+      },
     };
   },
   methods: {
@@ -69,12 +69,12 @@ export default {
         .then(() => {
           this.addNotification({
             type: "is-success",
-            message: "Uspešno ste uneli novu vezu stavke kataloga i proizvoda "
+            message: "Uspešno ste uneli novu vezu stavke kataloga i proizvoda ",
           });
 
           api
             .getAllItemProducts()
-            .then(res => {
+            .then((res) => {
               this.setTableColumns(res.data.tableColumns);
               this.setTableData(res.data.tableData);
             })
@@ -82,10 +82,10 @@ export default {
 
           this.closeModal();
         })
-        .catch(error => {
+        .catch((error) => {
           this.addNotification({
             type: "is-danger",
-            message: error.response.data.message
+            message: error.response.data.message,
           });
         });
     },
@@ -99,8 +99,8 @@ export default {
       if (this.itemProduct.idProizvoda === "") {
         this.itemProduct.idProizvoda = null;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

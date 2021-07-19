@@ -11,10 +11,10 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
-import { api } from "@/axios/api";
+import { api } from "@/api/api";
 export default {
   computed: {
-    ...mapState("modal", ["price"])
+    ...mapState("modal", ["price"]),
   },
   methods: {
     ...mapMutations("table", ["setTableData", "setTableColumns"]),
@@ -23,20 +23,20 @@ export default {
     deletePrice() {
       api
         .deletePrice(this.price.idProizvoda, {
-          datumPromene: this.price.datumPromene
+          datumPromene: this.price.datumPromene,
         })
-        .then(res => {
+        .then((res) => {
           console.log(res);
           this.addNotification({
             type: "is-success",
             message:
               "Uspešno ste obrisali cenu proizvoda sa šifrom " +
-              this.price.idProizvoda
+              this.price.idProizvoda,
           });
 
           api
             .getAllPrices()
-            .then(res => {
+            .then((res) => {
               this.setTableColumns(res.data.tableColumns);
               this.setTableData(res.data.tableData);
             })
@@ -44,14 +44,14 @@ export default {
 
           this.closeModal();
         })
-        .catch(error => {
+        .catch((error) => {
           this.addNotification({
             type: "is-danger",
-            message: error.response.data.message
+            message: error.response.data.message,
           });
         });
-    }
-  }
+    },
+  },
 };
 </script>
 

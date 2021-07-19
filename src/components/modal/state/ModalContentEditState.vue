@@ -58,14 +58,14 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
-import { api } from "@/axios/api";
+import { api } from "@/api/api";
 
 export default {
   data() {
     return {
       id: null,
       idProizvoda: null,
-      idSkladisneJedinice: null
+      idSkladisneJedinice: null,
     };
   },
   created() {
@@ -74,7 +74,7 @@ export default {
     this.datumPromene = this.state.datumPromene;
   },
   computed: {
-    ...mapState("modal", ["state"])
+    ...mapState("modal", ["state"]),
   },
   methods: {
     ...mapMutations("table", ["setTableData", "setTableColumns"]),
@@ -85,19 +85,19 @@ export default {
       api
         .editState(this.id, {
           idSkladisneJedinice: this.idSkladisneJedinice,
-          datumPromene: this.datumPromene
+          datumPromene: this.datumPromene,
         })
-        .then(res => {
+        .then((res) => {
           console.log(res);
           this.addNotification({
             type: "is-success",
             message:
-              "Uspešno ste izmenili stanje proizvoda sa šifrom " + this.id
+              "Uspešno ste izmenili stanje proizvoda sa šifrom " + this.id,
           });
 
           api
             .getAllStates()
-            .then(res => {
+            .then((res) => {
               this.setTableColumns(res.data.tableColumns);
               this.setTableData(res.data.tableData);
             })
@@ -105,10 +105,10 @@ export default {
 
           this.closeModal();
         })
-        .catch(error => {
+        .catch((error) => {
           this.addNotification({
             type: "is-danger",
-            message: error.response.data.message
+            message: error.response.data.message,
           });
         });
     },
@@ -125,8 +125,8 @@ export default {
       if (this.price.kolicina === "") {
         this.price.kolicina = null;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

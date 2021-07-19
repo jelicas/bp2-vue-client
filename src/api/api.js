@@ -1,4 +1,4 @@
-import axios from '@/axios/axios.js';
+import axios from '@/api/axios.js';
 
 export const api = {
   getAllProducts: () => {
@@ -31,34 +31,34 @@ export const api = {
   getAllItemProducts: () => {
     return axios.get('/item-products');
   },
-  addProduct: product => {
+  addProduct: (product) => {
     return axios.post('/products', product);
   },
-  addDrug: drug => {
+  addDrug: (drug) => {
     return axios.post('/drugs', drug);
   },
-  addPackage: packageType => {
+  addPackage: (packageType) => {
     return axios.post('/packages', packageType);
   },
-  addPrice: price => {
+  addPrice: (price) => {
     return axios.post('/prices', price);
   },
-  addState: state => {
+  addState: (state) => {
     return axios.post('/states', state);
   },
-  addSupplier: supplier => {
+  addSupplier: (supplier) => {
     return axios.post('/suppliers', supplier);
   },
-  addCatalogue: catalogue => {
+  addCatalogue: (catalogue) => {
     return axios.post('/catalogues', catalogue);
   },
-  addCatalogueItem: catalogueItem => {
+  addCatalogueItem: (catalogueItem) => {
     return axios.post('/catalogue-items', catalogueItem);
   },
-  addEmployee: employee => {
+  addEmployee: (employee) => {
     return axios.post('/employees', employee);
   },
-  addItemProduct: itemProduct => {
+  addItemProduct: (itemProduct) => {
     return axios.post('/item-products', itemProduct);
   },
   editProduct: (id, product) => {
@@ -91,13 +91,13 @@ export const api = {
   editItemProduct: (id, itemProduct) => {
     return axios.put(`/item-products/${id}`, itemProduct);
   },
-  deleteProduct: id => {
+  deleteProduct: (id) => {
     return axios.delete(`/products/${id}`);
   },
-  deleteDrug: id => {
+  deleteDrug: (id) => {
     return axios.delete(`/drugs/${id}`);
   },
-  deletePackage: id => {
+  deletePackage: (id) => {
     return axios.delete(`/packages/${id}`);
   },
   deletePrice: (id, price) => {
@@ -106,16 +106,16 @@ export const api = {
   deleteState: (id, state) => {
     return axios.delete(`/states/${id}`, { data: state });
   },
-  deleteSupplier: id => {
+  deleteSupplier: (id) => {
     return axios.delete(`/suppliers/${id}`);
   },
-  deleteCatalogue: id => {
+  deleteCatalogue: (id) => {
     return axios.delete(`/catalogues/${id}`);
   },
   deleteCatalogueItem: (id, rbStavke) => {
     return axios.delete(`/catalogue-items/${id}`, { data: rbStavke });
   },
-  deleteEmployee: id => {
+  deleteEmployee: (id) => {
     return axios.delete(`/employees/${id}`);
   },
   deleteItemProduct: (id, itemProduct) => {

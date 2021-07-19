@@ -81,7 +81,7 @@
 </template>
 
 <script>
-import { api } from "@/axios/api";
+import { api } from "@/api/api";
 import { mapMutations } from "vuex";
 
 export default {
@@ -93,8 +93,8 @@ export default {
         trenutnaCena: null,
         kolicina: null,
         nazivTipaPakovanja: null,
-        idFabrike: null
-      }
+        idFabrike: null,
+      },
     };
   },
   methods: {
@@ -108,12 +108,12 @@ export default {
         .then(() => {
           this.addNotification({
             type: "is-success",
-            message: "Uspešno ste uneli novi proizvod "
+            message: "Uspešno ste uneli novi proizvod ",
           });
 
           api
             .getAllProducts()
-            .then(res => {
+            .then((res) => {
               console.log(res);
               this.setTableColumns(res.data.tableColumns);
               this.setTableData(res.data.tableData);
@@ -121,10 +121,10 @@ export default {
             .catch(() => {});
           this.closeModal();
         })
-        .catch(error => {
+        .catch((error) => {
           this.addNotification({
             type: "is-danger",
-            message: error.response.data.message
+            message: error.response.data.message,
           });
         });
     },
@@ -144,8 +144,8 @@ export default {
       if (this.product.nazivTipaPakovanja === "") {
         this.product.nazivTipaPakovanja = null;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

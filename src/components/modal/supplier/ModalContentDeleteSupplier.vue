@@ -11,10 +11,10 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
-import { api } from "@/axios/api";
+import { api } from "@/api/api";
 export default {
   computed: {
-    ...mapState("modal", ["supplier"])
+    ...mapState("modal", ["supplier"]),
   },
   methods: {
     ...mapMutations("table", ["setTableData", "setTableColumns"]),
@@ -23,17 +23,17 @@ export default {
     deleteSupplier() {
       api
         .deleteSupplier(this.supplier.pib)
-        .then(res => {
+        .then((res) => {
           console.log(res);
           this.addNotification({
             type: "is-success",
             message:
-              "Uspešno ste obrisali dobavljača sa pibom " + this.supplier.pib
+              "Uspešno ste obrisali dobavljača sa pibom " + this.supplier.pib,
           });
 
           api
             .getAllSuppliers()
-            .then(res => {
+            .then((res) => {
               this.setTableColumns(res.data.tableColumns);
               this.setTableData(res.data.tableData);
             })
@@ -41,14 +41,14 @@ export default {
 
           this.closeModal();
         })
-        .catch(error => {
+        .catch((error) => {
           this.addNotification({
             type: "is-danger",
-            message: error.response.data.message
+            message: error.response.data.message,
           });
         });
-    }
-  }
+    },
+  },
 };
 </script>
 

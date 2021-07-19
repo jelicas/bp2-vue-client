@@ -105,7 +105,7 @@
 </template>
 
 <script>
-import { api } from "@/axios/api";
+import { api } from "@/api/api";
 import { mapMutations } from "vuex";
 
 export default {
@@ -119,8 +119,8 @@ export default {
         email: null,
         telefon: null,
         jmbg: null,
-        tipZaposlenog: null
-      }
+        tipZaposlenog: null,
+      },
     };
   },
   methods: {
@@ -134,12 +134,12 @@ export default {
         .then(() => {
           this.addNotification({
             type: "is-success",
-            message: "Uspešno ste uneli novog zaposlenog "
+            message: "Uspešno ste uneli novog zaposlenog ",
           });
 
           api
             .getAllEmployees()
-            .then(res => {
+            .then((res) => {
               this.setTableColumns(res.data.tableColumns);
               this.setTableData(res.data.tableData);
             })
@@ -147,10 +147,10 @@ export default {
 
           this.closeModal();
         })
-        .catch(error => {
+        .catch((error) => {
           this.addNotification({
             type: "is-danger",
-            message: error.response.data.message
+            message: error.response.data.message,
           });
         });
     },
@@ -179,8 +179,8 @@ export default {
       if (this.employee.tipZaposlenog === "") {
         this.employee.tipZaposlenog = null;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

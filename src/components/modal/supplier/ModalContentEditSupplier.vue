@@ -118,19 +118,19 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
-import { api } from "@/axios/api";
+import { api } from "@/api/api";
 
 export default {
   data() {
     return {
-      id: null
+      id: null,
     };
   },
   created() {
     this.id = this.supplier.id;
   },
   computed: {
-    ...mapState("modal", ["supplier"])
+    ...mapState("modal", ["supplier"]),
   },
   methods: {
     ...mapMutations("table", ["setTableData", "setTableColumns"]),
@@ -140,16 +140,16 @@ export default {
       this.transformSupplier();
       api
         .editSupplier(this.id, { ...this.supplier })
-        .then(res => {
+        .then((res) => {
           console.log(res);
           this.addNotification({
             type: "is-success",
-            message: "Uspešno ste izmenili dobavljača sa šifrom " + this.id
+            message: "Uspešno ste izmenili dobavljača sa šifrom " + this.id,
           });
 
           api
             .getAllSuppliers()
-            .then(res => {
+            .then((res) => {
               this.setTableColumns(res.data.tableColumns);
               this.setTableData(res.data.tableData);
             })
@@ -157,10 +157,10 @@ export default {
 
           this.closeModal();
         })
-        .catch(error => {
+        .catch((error) => {
           this.addNotification({
             type: "is-danger",
-            message: error.response.data.message
+            message: error.response.data.message,
           });
         });
     },
@@ -192,8 +192,8 @@ export default {
       if (this.supplier.telefon === "") {
         this.supplier.telefon = null;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
