@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="subtitle is-4">
-      Da li sigurno želite da obrišete lek sa šifrom {{ drug.drugId }}?
+      Da li sigurno želite da obrišete lek sa šifrom {{ drug.id }}?
     </div>
     <div class="control">
       <button class="button is-link" @click="deleteDrug">Obriši</button>
@@ -22,12 +22,12 @@ export default {
     ...mapMutations("notification", ["addNotification"]),
     deleteDrug() {
       api
-        .deleteDrug(this.drug.drugId)
+        .deleteDrug(this.drug.id)
         .then((res) => {
           console.log(res);
           this.addNotification({
             type: "is-success",
-            message: "Uspešno ste obrisali lek sa šifrom " + this.drug.drugId,
+            message: "Uspešno ste obrisali lek sa šifrom " + this.drug.id,
           });
 
           api

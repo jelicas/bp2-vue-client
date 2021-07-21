@@ -1,9 +1,8 @@
 <template>
   <div>
     <div class="subtitle is-4">
-      Da li sigurno želite da obrišete vrstu pakovanja "{{
-        packageType.nazivTipaPakovanja
-      }}" sa šifrom {{ packageType.idTipaPakovanja }}?
+      Da li sigurno želite da obrišete vrstu pakovanja "{{ packageType.name }}"
+      sa šifrom {{ packageType.id }}?
     </div>
     <div class="control">
       <button class="button is-link" @click="deletePackage">Obriši</button>
@@ -24,14 +23,14 @@ export default {
     ...mapMutations("notification", ["addNotification"]),
     deletePackage() {
       api
-        .deletePackage(this.packageType.idTipaPakovanja)
+        .deletePackage(this.packageType.id)
         .then((res) => {
           console.log(res);
           this.addNotification({
             type: "is-success",
             message:
               "Uspešno ste obrisali tip pakovanja sa šifrom " +
-              this.packageType.idTipaPakovanja,
+              this.packageType.id,
           });
 
           api

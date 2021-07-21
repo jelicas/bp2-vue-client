@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="subtitle is-4">
-      Da li sigurno želite da obrišete stanje proizvoda {{ state.idProizvoda }}?
+      Da li sigurno želite da obrišete stanje proizvoda {{ state.productId }}?
     </div>
     <div class="control">
       <button class="button is-link" @click="deleteState">Obriši</button>
@@ -22,9 +22,9 @@ export default {
     ...mapMutations("notification", ["addNotification"]),
     deleteState() {
       api
-        .deleteState(this.state.idProizvoda, {
-          datumPromene: this.state.datumPromene,
-          idSkladisneJedinice: this.state.idSkladisneJedinice,
+        .deleteState(this.state.productId, {
+          dateOfChange: this.state.dateOfChange,
+          warehouseId: this.state.warehouseId,
         })
         .then((res) => {
           console.log(res);
@@ -32,7 +32,7 @@ export default {
             type: "is-success",
             message:
               "Uspešno ste obrisali stanje proizvoda sa šifrom " +
-              this.state.idProizvoda,
+              this.state.productId,
           });
 
           api

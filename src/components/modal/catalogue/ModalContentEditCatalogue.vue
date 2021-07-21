@@ -7,19 +7,19 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="catalogue.idKataloga"
+          v-model="catalogue.id"
         />
       </div>
     </div>
 
     <div class="field">
-      <label class="label">Datum</label>
+      <label class="label">date</label>
       <div class="control">
         <input
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="catalogue.datum"
+          v-model="catalogue.date"
         />
       </div>
     </div>
@@ -31,7 +31,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="catalogue.rb"
+          v-model="catalogue.catalogueSeqNum"
         />
       </div>
     </div>
@@ -43,7 +43,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="catalogue.idDobavljaca"
+          v-model="catalogue.supplierId"
         />
       </div>
     </div>
@@ -67,7 +67,7 @@ export default {
     };
   },
   created() {
-    this.id = this.catalogue.idKataloga;
+    this.id = this.catalogue.id;
   },
   computed: {
     ...mapState("modal", ["catalogue"]),
@@ -77,7 +77,7 @@ export default {
     ...mapMutations("modal", ["closeModal"]),
     ...mapMutations("notification", ["addNotification"]),
     editCatalogue() {
-      this.transformCatalogue();
+      this.transformEmptyFieldsToNull();
       api
         .editCatalogue(this.id, { ...this.catalogue })
         .then((res) => {
@@ -104,15 +104,15 @@ export default {
           });
         });
     },
-    transformCatalogue() {
-      if (this.catalogue.datum === "") {
-        this.catalogue.datum = null;
+    transformEmptyFieldsToNull() {
+      if (this.catalogue.date === "") {
+        this.catalogue.date = null;
       }
-      if (this.catalogue.rb === "") {
-        this.catalogue.rb = null;
+      if (this.catalogue.catalogueSeqNum === "") {
+        this.catalogue.catalogueSeqNum = null;
       }
-      if (this.catalogue.idDobavljaca === "") {
-        this.catalogue.idDobavljaca = null;
+      if (this.catalogue.supplierId === "") {
+        this.catalogue.supplierId = null;
       }
     },
   },

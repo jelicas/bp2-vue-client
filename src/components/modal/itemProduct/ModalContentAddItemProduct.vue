@@ -7,7 +7,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="itemProduct.idKataloga"
+          v-model="itemProduct.catalogueId"
         />
       </div>
     </div>
@@ -19,7 +19,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="itemProduct.rbStavke"
+          v-model="itemProduct.itemSeqNum"
         />
       </div>
     </div>
@@ -31,7 +31,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="itemProduct.idProizvoda"
+          v-model="itemProduct.productId"
         />
       </div>
     </div>
@@ -52,9 +52,9 @@ export default {
   data() {
     return {
       itemProduct: {
-        idKataloga: null,
-        rbStavke: null,
-        idProizvoda: null,
+        catalogueId: null,
+        itemSeqNum: null,
+        productId: null,
       },
     };
   },
@@ -90,14 +90,14 @@ export default {
         });
     },
     transformItemProduct() {
-      if (this.itemProduct.idKataloga === "") {
-        this.itemProduct.idKataloga = null;
+      if (this.itemProduct.catalogueId === "") {
+        this.itemProduct.catalogueId = null;
       }
-      if (this.itemProduct.rbStavke === "") {
-        this.itemProduct.rbStavke = null;
+      if (this.itemProduct.itemSeqNum === "") {
+        this.itemProduct.itemSeqNum = null;
       }
-      if (this.itemProduct.idProizvoda === "") {
-        this.itemProduct.idProizvoda = null;
+      if (this.itemProduct.productId === "") {
+        this.itemProduct.productId = null;
       }
     },
   },

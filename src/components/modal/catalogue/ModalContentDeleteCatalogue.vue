@@ -2,7 +2,7 @@
   <div>
     <div class="subtitle is-4">
       Da li sigurno želite da obrišete katalog sa šifrom
-      {{ catalogue.idKataloga }}?
+      {{ catalogue.id }}?
     </div>
     <div class="control">
       <button class="button is-link" @click="deleteCatalogue">Obriši</button>
@@ -23,14 +23,13 @@ export default {
     ...mapMutations("notification", ["addNotification"]),
     deleteCatalogue() {
       api
-        .deleteCatalogue(this.catalogue.idKataloga)
+        .deleteCatalogue(this.catalogue.id)
         .then((res) => {
           console.log(res);
           this.addNotification({
             type: "is-success",
             message:
-              "Uspešno ste obrisali katalog sa šifrom " +
-              this.catalogue.idKataloga,
+              "Uspešno ste obrisali katalog sa šifrom " + this.catalogue.id,
           });
 
           api

@@ -25,25 +25,25 @@
     </div>
 
     <div class="field">
-      <label class="label">Naziv</label>
+      <label class="label">name</label>
       <div class="control">
         <input
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="supplier.naziv"
+          v-model="supplier.name"
         />
       </div>
     </div>
 
     <div class="field">
-      <label class="label">Adresa</label>
+      <label class="label">address</label>
       <div class="control">
         <input
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="supplier.adresa"
+          v-model="supplier.address"
         />
       </div>
     </div>
@@ -67,19 +67,19 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="supplier.maticniBroj"
+          v-model="supplier.nationalId"
         />
       </div>
     </div>
 
     <div class="field">
-      <label class="label">Naziv banke</label>
+      <label class="label">name banke</label>
       <div class="control">
         <input
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="supplier.nazivBanke"
+          v-model="supplier.bankName"
         />
       </div>
     </div>
@@ -91,19 +91,19 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="supplier.brojRacuna"
+          v-model="supplier.bankAccountName"
         />
       </div>
     </div>
 
     <div class="field">
-      <label class="label">Telefon</label>
+      <label class="label">telephoneNumber</label>
       <div class="control">
         <input
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="supplier.telefon"
+          v-model="supplier.telephoneNumber"
         />
       </div>
     </div>
@@ -171,26 +171,26 @@ export default {
       if (this.supplier.pib === "") {
         this.supplier.pib = null;
       }
-      if (this.supplier.naziv === "") {
-        this.supplier.naziv = null;
+      if (this.supplier.name === "") {
+        this.supplier.name = null;
       }
-      if (this.supplier.adresa === "") {
-        this.supplier.adresa = null;
+      if (this.supplier.address === "") {
+        this.supplier.address = null;
       }
-      if (this.supplier.maticniBroj === "") {
-        this.supplier.maticniBroj = null;
+      if (this.supplier.nationalId === "") {
+        this.supplier.nationalId = null;
       }
       if (this.supplier.email === "") {
         this.supplier.email = null;
       }
-      if (this.supplier.nazivBanke === "") {
-        this.supplier.nazivBanke = null;
+      if (this.supplier.bankName === "") {
+        this.supplier.bankName = null;
       }
-      if (this.supplier.brojRacuna === "") {
-        this.supplier.brojRacuna = null;
+      if (this.supplier.bankAccountName === "") {
+        this.supplier.bankAccountName = null;
       }
-      if (this.supplier.telefon === "") {
-        this.supplier.telefon = null;
+      if (this.supplier.telephoneNumber === "") {
+        this.supplier.telephoneNumber = null;
       }
     },
   },

@@ -7,19 +7,19 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="packageType.idTipaPakovanja"
+          v-model="packageType.id"
         />
       </div>
     </div>
 
     <div class="field">
-      <label class="label">Naziv tipa pakovanja</label>
+      <label class="label">name tipa pakovanja</label>
       <div class="control">
         <input
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="packageType.nazivTipaPakovanja"
+          v-model="packageType.name"
         />
       </div>
     </div>
@@ -40,8 +40,8 @@ export default {
   data() {
     return {
       packageType: {
-        idTipaPakovanja: null,
-        nazivTipaPakovanja: null,
+        id: null,
+        name: null,
       },
     };
   },
@@ -77,11 +77,11 @@ export default {
         });
     },
     transformPackage() {
-      if (this.packageType.idTipaPakovanja === "") {
-        this.packageType.idTipaPakovanja = null;
+      if (this.packageType.id === "") {
+        this.packageType.id = null;
       }
-      if (this.packageType.nazivTipaPakovanja === "") {
-        this.packageType.nazivTipaPakovanja = null;
+      if (this.packageType.name === "") {
+        this.packageType.name = null;
       }
     },
   },

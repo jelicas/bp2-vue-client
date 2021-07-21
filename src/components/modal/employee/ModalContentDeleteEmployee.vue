@@ -2,7 +2,7 @@
   <div>
     <div class="subtitle is-4">
       Da li sigurno želite da obrišete zaposlenog sa šifrom
-      {{ employee.idZaposlenog }}?
+      {{ employee.id }}?
     </div>
     <div class="control">
       <button class="button is-link" @click="deleteEmployee">Obriši</button>
@@ -23,14 +23,13 @@ export default {
     ...mapMutations("notification", ["addNotification"]),
     deleteEmployee() {
       api
-        .deleteEmployee(this.employee.idZaposlenog)
+        .deleteEmployee(this.employee.id)
         .then((res) => {
           console.log(res);
           this.addNotification({
             type: "is-success",
             message:
-              "Uspešno ste obrisali zaposlenog sa šifrom " +
-              this.employee.idZaposlenog,
+              "Uspešno ste obrisali zaposlenog sa šifrom " + this.employee.id,
           });
 
           api

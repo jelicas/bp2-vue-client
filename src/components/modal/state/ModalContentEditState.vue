@@ -7,7 +7,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="state.idProizvoda"
+          v-model="state.productId"
         />
       </div>
     </div>
@@ -19,7 +19,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="state.idSkladisneJedinice"
+          v-model="state.warehouseId"
         />
       </div>
     </div>
@@ -31,7 +31,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="state.kolicina"
+          v-model="state.amount"
         />
       </div>
     </div>
@@ -43,7 +43,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="state.datumPromene"
+          v-model="state.dateOfChange"
         />
       </div>
     </div>
@@ -64,14 +64,14 @@ export default {
   data() {
     return {
       id: null,
-      idProizvoda: null,
-      idSkladisneJedinice: null,
+      productId: null,
+      warehouseId: null,
     };
   },
   created() {
-    this.id = this.state.idProizvoda;
-    this.idSkladisneJedinice = this.state.idSkladisneJedinice;
-    this.datumPromene = this.state.datumPromene;
+    this.id = this.state.productId;
+    this.warehouseId = this.state.warehouseId;
+    this.dateOfChange = this.state.dateOfChange;
   },
   computed: {
     ...mapState("modal", ["state"]),
@@ -84,8 +84,8 @@ export default {
       this.transformState();
       api
         .editState(this.id, {
-          idSkladisneJedinice: this.idSkladisneJedinice,
-          datumPromene: this.datumPromene,
+          warehouseId: this.warehouseId,
+          dateOfChange: this.dateOfChange,
         })
         .then((res) => {
           console.log(res);
@@ -113,17 +113,17 @@ export default {
         });
     },
     transformState() {
-      if (this.price.idProizvoda === "") {
-        this.price.idProizvoda = null;
+      if (this.price.productId === "") {
+        this.price.productId = null;
       }
-      if (this.price.idSkladisneJedinice === "") {
-        this.price.idSkladisneJedinice = null;
+      if (this.price.warehouseId === "") {
+        this.price.warehouseId = null;
       }
-      if (this.price.datumPromene === "") {
-        this.price.datumPromene = null;
+      if (this.price.dateOfChange === "") {
+        this.price.dateOfChange = null;
       }
-      if (this.price.kolicina === "") {
-        this.price.kolicina = null;
+      if (this.price.amount === "") {
+        this.price.amount = null;
       }
     },
   },

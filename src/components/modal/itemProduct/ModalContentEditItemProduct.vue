@@ -7,7 +7,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="itemProduct.idKataloga"
+          v-model="itemProduct.catalogueId"
         />
       </div>
     </div>
@@ -19,7 +19,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="itemProduct.rbStavke"
+          v-model="itemProduct.itemSeqNum"
         />
       </div>
     </div>
@@ -31,7 +31,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="itemProduct.idProizvoda"
+          v-model="itemProduct.productId"
         />
       </div>
     </div>
@@ -51,13 +51,13 @@ import { api } from "@/api/api";
 export default {
   data() {
     return {
-      id: null,
-      rbStavke: null,
+      catalogueId: null,
+      itemSeqNum: null,
     };
   },
   created() {
-    this.id = this.itemProduct.idKataloga;
-    this.rbStavke = this.itemProduct.rbStavke;
+    this.catalogueId = this.itemProduct.catalogueId;
+    this.itemSeqNum = this.itemProduct.itemSeqNum;
   },
   computed: {
     ...mapState("modal", ["itemProduct"]),
@@ -69,7 +69,7 @@ export default {
     editItemProduct() {
       this.transformItemProduct();
       api
-        .editItemProduct(this.id, { ...this.itemProduct })
+        .editItemProduct(this.catalogueId, { ...this.itemProduct })
         .then((res) => {
           console.log(res);
           this.addNotification({
@@ -95,14 +95,14 @@ export default {
         });
     },
     transformItemProduct() {
-      if (this.itemProduct.idKataloga === "") {
-        this.itemProduct.idKataloga = null;
+      if (this.itemProduct.catalogueId === "") {
+        this.itemProduct.catalogueId = null;
       }
-      if (this.itemProduct.rbStavke === "") {
-        this.itemProduct.rbStavke = null;
+      if (this.itemProduct.itemSeqNum === "") {
+        this.itemProduct.itemSeqNum = null;
       }
-      if (this.itemProduct.idProizvoda === "") {
-        this.itemProduct.idProizvoda = null;
+      if (this.itemProduct.productId === "") {
+        this.itemProduct.productId = null;
       }
     },
   },

@@ -7,7 +7,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="catalogueItem.idKataloga"
+          v-model="catalogueItem.catalogueId"
         />
       </div>
     </div>
@@ -19,31 +19,31 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="catalogueItem.rbStavke"
+          v-model="catalogueItem.itemSeqNum"
         />
       </div>
     </div>
 
     <div class="field">
-      <label class="label">Naziv</label>
+      <label class="label">name</label>
       <div class="control">
         <input
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="catalogueItem.naziv"
+          v-model="catalogueItem.name"
         />
       </div>
     </div>
 
     <div class="field">
-      <label class="label">Cena</label>
+      <label class="label">price</label>
       <div class="control">
         <input
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="catalogueItem.cena"
+          v-model="catalogueItem.price"
         />
       </div>
     </div>
@@ -55,7 +55,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="catalogueItem.jm"
+          v-model="catalogueItem.measurementUnit"
         />
       </div>
     </div>
@@ -67,7 +67,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="catalogueItem.popust"
+          v-model="catalogueItem.discount"
         />
       </div>
     </div>
@@ -79,7 +79,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="catalogueItem.idFabrike"
+          v-model="catalogueItem.factoryId"
         />
       </div>
     </div>
@@ -102,12 +102,12 @@ export default {
   data() {
     return {
       id: null,
-      rbStavke: null,
+      itemSeqNum: null,
     };
   },
   created() {
-    this.id = this.catalogueItem.idKataloga;
-    this.rbStavke = this.catalogueItem.rbStavke;
+    this.id = this.catalogueItem.catalogueId;
+    this.itemSeqNum = this.catalogueItem.itemSeqNum;
   },
   computed: {
     ...mapState("modal", ["catalogueItem"]),
@@ -145,23 +145,23 @@ export default {
         });
     },
     transformCatalogueItem() {
-      if (this.catalogueItem.idKataloga === "") {
-        this.catalogueItem.idKataloga = null;
+      if (this.catalogueItem.catalogueId === "") {
+        this.catalogueItem.catalogueId = null;
       }
-      if (this.catalogueItem.rbStavke === "") {
-        this.catalogueItem.rbStavke = null;
+      if (this.catalogueItem.itemSeqNum === "") {
+        this.catalogueItem.itemSeqNum = null;
       }
-      if (this.catalogueItem.naziv === "") {
-        this.catalogueItem.naziv = null;
+      if (this.catalogueItem.name === "") {
+        this.catalogueItem.name = null;
       }
-      if (this.catalogueItem.cena === "") {
-        this.catalogueItem.cena = null;
+      if (this.catalogueItem.price === "") {
+        this.catalogueItem.price = null;
       }
-      if (this.catalogueItem.popust === "") {
-        this.catalogueItem.popust = null;
+      if (this.catalogueItem.discount === "") {
+        this.catalogueItem.discount = null;
       }
-      if (this.catalogueItem.idFabrike === "") {
-        this.catalogueItem.idFabrike = null;
+      if (this.catalogueItem.factoryId === "") {
+        this.catalogueItem.factoryId = null;
       }
     },
   },

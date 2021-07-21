@@ -112,8 +112,8 @@ export const api = {
   deleteCatalogue: (id) => {
     return axios.delete(`/catalogues/${id}`);
   },
-  deleteCatalogueItem: (id, rbStavke) => {
-    return axios.delete(`/catalogue-items/${id}`, { data: rbStavke });
+  deleteCatalogueItem: (id, itemSeqNum) => {
+    return axios.delete(`/catalogue-items/${id}`, { data: itemSeqNum });
   },
   deleteEmployee: (id) => {
     return axios.delete(`/employees/${id}`);

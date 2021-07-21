@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="subtitle is-4">
-      Da li sigurno želite da obrišete cenu proizvoda {{ price.idProizvoda }}?
+      Da li sigurno želite da obrišete cenu proizvoda {{ price.productId }}?
     </div>
     <div class="control">
       <button class="button is-link" @click="deletePrice">Obriši</button>
@@ -22,8 +22,8 @@ export default {
     ...mapMutations("notification", ["addNotification"]),
     deletePrice() {
       api
-        .deletePrice(this.price.idProizvoda, {
-          datumPromene: this.price.datumPromene,
+        .deletePrice(this.price.productId, {
+          dateOfChange: this.price.dateOfChange,
         })
         .then((res) => {
           console.log(res);
@@ -31,7 +31,7 @@ export default {
             type: "is-success",
             message:
               "Uspešno ste obrisali cenu proizvoda sa šifrom " +
-              this.price.idProizvoda,
+              this.price.productId,
           });
 
           api

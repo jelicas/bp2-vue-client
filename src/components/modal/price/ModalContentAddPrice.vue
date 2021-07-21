@@ -7,19 +7,19 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="price.idProizvoda"
+          v-model="price.productId"
         />
       </div>
     </div>
 
     <div class="field">
-      <label class="label">Cena proizvoda</label>
+      <label class="label">price proizvoda</label>
       <div class="control">
         <input
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="price.cena"
+          v-model="price.price"
         />
       </div>
     </div>
@@ -31,7 +31,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="price.datumPromene"
+          v-model="price.dateOfChanf"
         />
       </div>
     </div>
@@ -52,9 +52,9 @@ export default {
   data() {
     return {
       price: {
-        idProizvoda: null,
-        datumPromene: null,
-        cena: null,
+        productId: null,
+        dateOfChange: null,
+        price: null,
       },
     };
   },
@@ -90,14 +90,14 @@ export default {
         });
     },
     transformPrice() {
-      if (this.price.idProizvoda === "") {
-        this.price.idProizvoda = null;
+      if (this.price.productId === "") {
+        this.price.productId = null;
       }
-      if (this.price.datumPromene === "") {
-        this.price.datumPromene = null;
+      if (this.price.dateOfChange === "") {
+        this.price.dateOfChange = null;
       }
-      if (this.price.cena === "") {
-        this.price.cena = null;
+      if (this.price.price === "") {
+        this.price.price = null;
       }
     },
   },

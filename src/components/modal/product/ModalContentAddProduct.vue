@@ -7,7 +7,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="product.idProizvoda"
+          v-model="product.id"
         />
       </div>
     </div>
@@ -19,7 +19,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="product.nazivProizvoda"
+          v-model="product.name"
         />
       </div>
     </div>
@@ -31,7 +31,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="product.trenutnaCena"
+          v-model="product.currentPrice"
         />
       </div>
     </div>
@@ -43,7 +43,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="product.kolicina"
+          v-model="product.amount"
         />
       </div>
     </div>
@@ -55,7 +55,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="product.nazivTipaPakovanja"
+          v-model="product.packageType"
         />
       </div>
     </div>
@@ -67,7 +67,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="product.idFabrike"
+          v-model="product.factoryId"
         />
       </div>
     </div>
@@ -88,12 +88,12 @@ export default {
   data() {
     return {
       product: {
-        idProizvoda: null,
-        nazivProizvoda: null,
-        trenutnaCena: null,
-        kolicina: null,
-        nazivTipaPakovanja: null,
-        idFabrike: null,
+        id: null,
+        name: null,
+        currentPrice: null,
+        amount: null,
+        packageType: null,
+        factoryId: null,
       },
     };
   },
@@ -129,20 +129,20 @@ export default {
         });
     },
     transformProduct() {
-      if (this.product.idProizvoda === "") {
-        this.product.idProizvoda = null;
+      if (this.product.id === "") {
+        this.product.id = null;
       }
-      if (this.product.nazivProizvoda === "") {
-        this.product.nazivProizvoda = null;
+      if (this.product.name === "") {
+        this.product.name = null;
       }
-      if (this.product.trenutnaCena === "") {
-        this.product.trenutnaCena = null;
+      if (this.product.currentPrice === "") {
+        this.product.currentPrice = null;
       }
-      if (this.product.kolicina === "") {
-        this.product.kolicina = null;
+      if (this.product.amount === "") {
+        this.product.amount = null;
       }
-      if (this.product.nazivTipaPakovanja === "") {
-        this.product.nazivTipaPakovanja = null;
+      if (this.product.packageType === "") {
+        this.product.packageType = null;
       }
     },
   },

@@ -7,7 +7,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="state.idProizvoda"
+          v-model="state.productId"
         />
       </div>
     </div>
@@ -19,7 +19,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="state.idSkladisneJedinice"
+          v-model="state.warehouseId"
         />
       </div>
     </div>
@@ -31,7 +31,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="state.kolicina"
+          v-model="state.amount"
         />
       </div>
     </div>
@@ -43,7 +43,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="state.datumPromene"
+          v-model="state.dateOfChange"
         />
       </div>
     </div>
@@ -64,10 +64,10 @@ export default {
   data() {
     return {
       state: {
-        idProizvoda: null,
-        idSkladisneJedinice: null,
-        datumPromene: null,
-        kolicina: null,
+        productId: null,
+        warehouseId: null,
+        dateOfChange: null,
+        amount: null,
       },
     };
   },
@@ -103,17 +103,17 @@ export default {
         });
     },
     transformState() {
-      if (this.price.idProizvoda === "") {
-        this.price.idProizvoda = null;
+      if (this.state.productId === "") {
+        this.price.productId = null;
       }
-      if (this.price.idSkladisneJedinice === "") {
-        this.price.idSkladisneJedinice = null;
+      if (this.state.warehouseId === "") {
+        this.price.warehouseId = null;
       }
-      if (this.price.datumPromene === "") {
-        this.price.datumPromene = null;
+      if (this.state.dateOfChange === "") {
+        this.price.dateOfChange = null;
       }
-      if (this.price.kolicina === "") {
-        this.price.kolicina = null;
+      if (this.state.amount === "") {
+        this.price.amount = null;
       }
     },
   },

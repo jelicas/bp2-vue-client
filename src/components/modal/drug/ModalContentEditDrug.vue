@@ -7,7 +7,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="drug.drugId"
+          v-model="drug.id"
           readonly
         />
       </div>
@@ -92,7 +92,7 @@ export default {
     };
   },
   created() {
-    this.id = this.drug.drugId;
+    this.id = this.drug.id;
   },
   computed: {
     ...mapState("modal", ["drug"]),
@@ -133,8 +133,8 @@ export default {
       if (this.drug.dosePerPackage === "") {
         this.drug.dosePerPackage = null;
       }
-      if (this.drug.drugId === "") {
-        this.drug.drugId = null;
+      if (this.drug.id === "") {
+        this.drug.id = null;
       }
       if (this.drug.piecesPerPackage === "") {
         this.drug.piecesPerPackage = null;

@@ -7,7 +7,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="drug.drugId"
+          v-model="drug.id"
         />
       </div>
     </div>
@@ -88,7 +88,7 @@ export default {
   data() {
     return {
       drug: {
-        drugId: null,
+        id: null,
         dosePerPackage: null,
         piecesPerPackage: null,
         jkl: null,
@@ -132,8 +132,8 @@ export default {
       if (this.drug.dosePerPackage === "") {
         this.drug.dosePerPackage = null;
       }
-      if (this.drug.drugId === "") {
-        this.drug.drugId = null;
+      if (this.drug.id === "") {
+        this.drug.id = null;
       }
       if (this.drug.piecesPerPackage === "") {
         this.drug.piecesPerPackage = null;

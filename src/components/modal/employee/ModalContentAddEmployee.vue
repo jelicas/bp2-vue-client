@@ -7,43 +7,43 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="employee.idZaposlenog"
+          v-model="employee.id"
         />
       </div>
     </div>
 
     <div class="field">
-      <label class="label">Ime</label>
+      <label class="label">name</label>
       <div class="control">
         <input
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="employee.ime"
+          v-model="employee.name"
         />
       </div>
     </div>
 
     <div class="field">
-      <label class="label">Prezime</label>
+      <label class="label">surname</label>
       <div class="control">
         <input
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="employee.prezime"
+          v-model="employee.surname"
         />
       </div>
     </div>
 
     <div class="field">
-      <label class="label">Adresa</label>
+      <label class="label">address</label>
       <div class="control">
         <input
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="employee.adresa"
+          v-model="employee.address"
         />
       </div>
     </div>
@@ -60,13 +60,13 @@
       </div>
 
       <div class="field">
-        <label class="label">Telefon</label>
+        <label class="label">telephoneNumber</label>
         <div class="control">
           <input
             class="input"
             type="text"
             placeholder="Text input"
-            v-model="employee.telefon"
+            v-model="employee.telephoneNumber"
           />
         </div>
       </div>
@@ -90,7 +90,7 @@
             class="input"
             type="text"
             placeholder="Text input"
-            v-model="employee.tipZaposlenog"
+            v-model="employee.typeOfEmployee"
           />
         </div>
       </div>
@@ -112,14 +112,14 @@ export default {
   data() {
     return {
       employee: {
-        idZaposlenog: null,
-        ime: null,
-        prezime: null,
-        adresa: null,
+        id: null,
+        name: null,
+        surname: null,
+        address: null,
         email: null,
-        telefon: null,
+        telephoneNumber: null,
         jmbg: null,
-        tipZaposlenog: null,
+        typeOfEmployee: null,
       },
     };
   },
@@ -155,29 +155,29 @@ export default {
         });
     },
     transformEmployee() {
-      if (this.employee.ime === "") {
-        this.employee.ime = null;
+      if (this.employee.name === "") {
+        this.employee.name = null;
       }
-      if (this.employee.prezime === "") {
-        this.employee.prezime = null;
+      if (this.employee.surname === "") {
+        this.employee.surname = null;
       }
-      if (this.employee.adresa === "") {
-        this.employee.adresa = null;
+      if (this.employee.address === "") {
+        this.employee.address = null;
       }
       if (this.employee.email === "") {
         this.employee.email = null;
       }
 
-      if (this.employee.telefon === "") {
-        this.employee.telefon = null;
+      if (this.employee.telephoneNumber === "") {
+        this.employee.telephoneNumber = null;
       }
 
       if (this.employee.jmbg === "") {
         this.employee.jmbg = null;
       }
 
-      if (this.employee.tipZaposlenog === "") {
-        this.employee.tipZaposlenog = null;
+      if (this.employee.typeOfEmployee === "") {
+        this.employee.typeOfEmployee = null;
       }
     },
   },

@@ -7,7 +7,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="packageType.idTipaPakovanja"
+          v-model="packageType.id"
           readonly
         />
       </div>
@@ -20,7 +20,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="packageType.nazivTipaPakovanja"
+          v-model="packageType.name"
         />
       </div>
     </div>
@@ -43,7 +43,7 @@ export default {
     };
   },
   created() {
-    this.id = this.packageType.idTipaPakovanja;
+    this.id = this.packageType.id;
   },
   computed: {
     ...mapState("modal", ["packageType"]),
@@ -81,11 +81,11 @@ export default {
         });
     },
     transformPackage() {
-      if (this.packageType.idTipaPakovanja === "") {
-        this.packageType.idTipaPakovanja = null;
+      if (this.packageType.id === "") {
+        this.packageType.id = null;
       }
-      if (this.packageType.nazivTipaPakovanja === "") {
-        this.packageType.nazivTipaPakovanja = null;
+      if (this.packageType.name === "") {
+        this.packageType.name = null;
       }
     },
   },

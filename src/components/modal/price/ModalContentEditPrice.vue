@@ -7,19 +7,19 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="price.idProizvoda"
+          v-model="price.productId"
         />
       </div>
     </div>
 
     <div class="field">
-      <label class="label">Cena proizvoda</label>
+      <label class="label">price proizvoda</label>
       <div class="control">
         <input
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="price.cena"
+          v-model="price.price"
         />
       </div>
     </div>
@@ -31,7 +31,7 @@
           class="input"
           type="text"
           placeholder="Text input"
-          v-model="price.datumPromene"
+          v-model="price.dateOfChange"
         />
       </div>
     </div>
@@ -51,13 +51,13 @@ import { api } from "@/api/api";
 export default {
   data() {
     return {
-      id: null,
-      datumPromene: null,
+      productId: null,
+      dateOfChange: null,
     };
   },
   created() {
-    this.id = this.price.idProizvoda;
-    this.datumPromene = this.price.datumPromene;
+    this.productId = this.price.productId;
+    this.dateOfChange = this.price.dateOfChange;
   },
   computed: {
     ...mapState("modal", ["price"]),
@@ -70,8 +70,8 @@ export default {
       this.transformPrice();
       api
         .editPrice(this.id, {
-          datumPromene: this.datumPromene,
-          cena: this.price.cena,
+          dateOfChange: this.dateOfChange,
+          price: this.price.price,
         })
         .then((res) => {
           console.log(res);
@@ -98,14 +98,14 @@ export default {
         });
     },
     transformPrice() {
-      if (this.price.idProizvoda === "") {
-        this.price.idProizvoda = null;
+      if (this.price.productId === "") {
+        this.price.productId = null;
       }
-      if (this.price.datumPromene === "") {
-        this.price.datumPromene = null;
+      if (this.price.dateOfChange === "") {
+        this.price.dateOfChange = null;
       }
-      if (this.price.cena === "") {
-        this.price.cena = null;
+      if (this.price.price === "") {
+        this.price.price = null;
       }
     },
   },
