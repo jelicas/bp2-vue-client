@@ -94,7 +94,8 @@ export default {
           this.addNotification({
             type: "is-success",
             message:
-              "Uspešno ste izmenili stanje proizvoda sa šifrom " + this.id,
+              "Uspešno ste izmenili stanje proizvoda sa šifrom " +
+              this.productId,
           });
 
           api
