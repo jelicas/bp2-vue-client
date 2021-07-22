@@ -13,7 +13,7 @@
     </div>
 
     <div class="field">
-      <label class="label">price proizvoda</label>
+      <label class="label">Cena proizvoda</label>
       <div class="control">
         <input
           class="input"

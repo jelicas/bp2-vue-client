@@ -23,6 +23,7 @@ export default {
     deleteState() {
       api
         .deleteState(this.state.productId, {
+          productId: this.state.productId,
           dateOfChange: this.state.dateOfChange,
           warehouseId: this.state.warehouseId,
         })

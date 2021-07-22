@@ -82,14 +82,14 @@ export const api = {
   editCatalogue: (id, catalogue) => {
     return axios.put(`/catalogues/${id}`, catalogue);
   },
-  editCatalogueItem: (id, catalogueItem) => {
-    return axios.put(`/catalogue-items/${id}`, catalogueItem);
+  editCatalogueItem: (catalogueId, catalogueItem) => {
+    return axios.put(`/catalogue-items/${catalogueId}`, catalogueItem);
   },
   editEmployee: (id, employee) => {
     return axios.put(`/employees/${id}`, employee);
   },
-  editItemProduct: (id, itemProduct) => {
-    return axios.put(`/item-products/${id}`, itemProduct);
+  editItemProduct: (itemProduct) => {
+    return axios.put(`/item-products/`, itemProduct);
   },
   deleteProduct: (id) => {
     return axios.delete(`/products/${id}`);

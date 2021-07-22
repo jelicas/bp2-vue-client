@@ -25,7 +25,7 @@
     </div>
 
     <div class="field">
-      <label class="label">name</label>
+      <label class="label">Naziv</label>
       <div class="control">
         <input
           class="input"
@@ -37,7 +37,7 @@
     </div>
 
     <div class="field">
-      <label class="label">price</label>
+      <label class="label">Cena</label>
       <div class="control">
         <input
           class="input"
@@ -101,12 +101,12 @@ import { api } from "@/api/api";
 export default {
   data() {
     return {
-      id: null,
+      catalogueId: null,
       itemSeqNum: null,
     };
   },
   created() {
-    this.id = this.catalogueItem.catalogueId;
+    this.catalogueId = this.catalogueItem.catalogueId;
     this.itemSeqNum = this.catalogueItem.itemSeqNum;
   },
   computed: {
@@ -119,7 +119,7 @@ export default {
     editCatalogueItem() {
       this.transformCatalogueItem();
       api
-        .editCatalogueItem(this.id, { ...this.catalogueItem })
+        .editCatalogueItem(this.catalogueId, { ...this.catalogueItem })
         .then((res) => {
           console.log(res);
           this.addNotification({

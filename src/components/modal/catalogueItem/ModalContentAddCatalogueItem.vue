@@ -25,7 +25,7 @@
     </div>
 
     <div class="field">
-      <label class="label">name</label>
+      <label class="label">Naziv</label>
       <div class="control">
         <input
           class="input"
@@ -37,7 +37,7 @@
     </div>
 
     <div class="field">
-      <label class="label">price</label>
+      <label class="label">Cena</label>
       <div class="control">
         <input
           class="input"

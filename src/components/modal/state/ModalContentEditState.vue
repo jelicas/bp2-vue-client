@@ -63,13 +63,13 @@ import { api } from "@/api/api";
 export default {
   data() {
     return {
-      id: null,
       productId: null,
+      dateOfChange: null,
       warehouseId: null,
     };
   },
   created() {
-    this.id = this.state.productId;
+    this.productId = this.state.productId;
     this.warehouseId = this.state.warehouseId;
     this.dateOfChange = this.state.dateOfChange;
   },
@@ -83,9 +83,11 @@ export default {
     editState() {
       this.transformState();
       api
-        .editState(this.id, {
-          warehouseId: this.warehouseId,
-          dateOfChange: this.dateOfChange,
+        .editState(this.productId, {
+          productId: this.state.productId,
+          warehouseId: this.state.warehouseId,
+          dateOfChange: this.state.dateOfChange,
+          amount: this.state.amount,
         })
         .then((res) => {
           console.log(res);
@@ -113,17 +115,17 @@ export default {
         });
     },
     transformState() {
-      if (this.price.productId === "") {
-        this.price.productId = null;
+      if (this.state.productId === "") {
+        this.state.productId = null;
       }
-      if (this.price.warehouseId === "") {
-        this.price.warehouseId = null;
+      if (this.state.warehouseId === "") {
+        this.state.warehouseId = null;
       }
-      if (this.price.dateOfChange === "") {
-        this.price.dateOfChange = null;
+      if (this.state.dateOfChange === "") {
+        this.state.dateOfChange = null;
       }
-      if (this.price.amount === "") {
-        this.price.amount = null;
+      if (this.state.amount === "") {
+        this.state.amount = null;
       }
     },
   },

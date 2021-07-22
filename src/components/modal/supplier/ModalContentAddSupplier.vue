@@ -1,18 +1,6 @@
 <template>
   <div class="modal-container--supplier">
     <div class="field">
-      <label class="label">Šifra dobavljača</label>
-      <div class="control">
-        <input
-          class="input"
-          type="text"
-          placeholder="Text input"
-          v-model="supplier.id"
-        />
-      </div>
-    </div>
-
-    <div class="field">
       <label class="label">PIB</label>
       <div class="control">
         <input
@@ -25,7 +13,7 @@
     </div>
 
     <div class="field">
-      <label class="label">name</label>
+      <label class="label">Naziv</label>
       <div class="control">
         <input
           class="input"
@@ -37,7 +25,7 @@
     </div>
 
     <div class="field">
-      <label class="label">address</label>
+      <label class="label">Adresa</label>
       <div class="control">
         <input
           class="input"
@@ -74,7 +62,7 @@
 
     <div style="display: flex">
       <div class="field">
-        <label class="label">name banke</label>
+        <label class="label">Ime banke</label>
         <div class="control">
           <input
             class="input"
@@ -92,14 +80,14 @@
             class="input"
             type="text"
             placeholder="Text input"
-            v-model="supplier.bankAccountName"
+            v-model="supplier.bankAccountNumber"
           />
         </div>
       </div>
     </div>
 
     <div class="field">
-      <label class="label">telephoneNumber</label>
+      <label class="label">Broj telefona</label>
       <div class="control">
         <input
           class="input"
@@ -126,14 +114,13 @@ export default {
   data() {
     return {
       supplier: {
-        id: null,
         pib: null,
         name: null,
         address: null,
         email: null,
         nationalId: null,
         bankName: null,
-        bankAccountName: null,
+        bankAccountNumber: null,
         telephoneNumber: null,
       },
     };
@@ -170,9 +157,6 @@ export default {
         });
     },
     transformSupplier() {
-      if (this.supplier.id === "") {
-        this.supplier.id = null;
-      }
       if (this.supplier.pib === "") {
         this.supplier.pib = null;
       }
@@ -191,8 +175,8 @@ export default {
       if (this.supplier.bankName === "") {
         this.supplier.bankName = null;
       }
-      if (this.supplier.bankAccountName === "") {
-        this.supplier.bankAccountName = null;
+      if (this.supplier.bankAccountNumber === "") {
+        this.supplier.bankAccountNumber = null;
       }
       if (this.supplier.telephoneNumber === "") {
         this.supplier.telephoneNumber = null;

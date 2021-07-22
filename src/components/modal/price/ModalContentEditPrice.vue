@@ -13,7 +13,7 @@
     </div>
 
     <div class="field">
-      <label class="label">price proizvoda</label>
+      <label class="label">Cena proizvoda</label>
       <div class="control">
         <input
           class="input"
@@ -69,7 +69,7 @@ export default {
     editPrice() {
       this.transformPrice();
       api
-        .editPrice(this.id, {
+        .editPrice(this.productId, {
           dateOfChange: this.dateOfChange,
           price: this.price.price,
         })
@@ -77,7 +77,8 @@ export default {
           console.log(res);
           this.addNotification({
             type: "is-success",
-            message: "Uspešno ste izmenili cenu proizvoda sa šifrom " + this.id,
+            message:
+              "Uspešno ste izmenili cenu proizvoda sa šifrom " + this.productId,
           });
 
           api

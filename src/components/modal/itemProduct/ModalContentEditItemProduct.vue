@@ -8,6 +8,7 @@
           type="text"
           placeholder="Text input"
           v-model="itemProduct.catalogueId"
+          disabled
         />
       </div>
     </div>
@@ -20,6 +21,7 @@
           type="text"
           placeholder="Text input"
           v-model="itemProduct.itemSeqNum"
+          disabled
         />
       </div>
     </div>
@@ -49,16 +51,6 @@ import { mapState, mapMutations } from "vuex";
 import { api } from "@/api/api";
 
 export default {
-  data() {
-    return {
-      catalogueId: null,
-      itemSeqNum: null,
-    };
-  },
-  created() {
-    this.catalogueId = this.itemProduct.catalogueId;
-    this.itemSeqNum = this.itemProduct.itemSeqNum;
-  },
   computed: {
     ...mapState("modal", ["itemProduct"]),
   },
@@ -69,12 +61,14 @@ export default {
     editItemProduct() {
       this.transformItemProduct();
       api
-        .editItemProduct(this.catalogueId, { ...this.itemProduct })
+        .editItemProduct({ ...this.itemProduct })
         .then((res) => {
           console.log(res);
           this.addNotification({
             type: "is-success",
-            message: "Uspešno ste izmenili vezu stavke kataloga " + this.id,
+            message:
+              "Uspešno ste izmenili vezu stavke kataloga " +
+              this.itemProduct.catalogueId,
           });
 
           api
