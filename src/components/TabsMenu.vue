@@ -59,7 +59,7 @@ export default {
       "setSupplier",
       "setCatalogue",
       "setCatalogueItem",
-      "setEmployee",
+      // "setEmployee",
       "setItemProduct",
     ]),
     populateDataForSelectedTab(i) {
@@ -118,16 +118,16 @@ export default {
             })
             .catch(() => {});
           break;
+        // case 6:
+        //   api
+        //     .getAllEmployees()
+        //     .then((res) => {
+        //       this.setTableColumns(res.data.tableColumns);
+        //       this.setTableData(res.data.tableData);
+        //     })
+        //     .catch(() => {});
+        //   break;
         case 6:
-          api
-            .getAllEmployees()
-            .then((res) => {
-              this.setTableColumns(res.data.tableColumns);
-              this.setTableData(res.data.tableData);
-            })
-            .catch(() => {});
-          break;
-        case 7:
           api
             .getAllCatalogues()
             .then((res) => {
@@ -136,7 +136,7 @@ export default {
             })
             .catch(() => {});
           break;
-        case 8:
+        case 7:
           api
             .getAllCatalogueItems()
             .then((res) => {
@@ -145,7 +145,7 @@ export default {
             })
             .catch(() => {});
           break;
-        case 9:
+        case 8:
           api
             .getAllItemProducts()
             .then((res) => {
@@ -178,16 +178,16 @@ export default {
         case 5:
           this.showModal("supplier/ModalContentAddSupplier");
           break;
+        // case 6:
+        //   this.showModal("employee/ModalContentAddEmployee");
+        //   break;
         case 6:
-          this.showModal("employee/ModalContentAddEmployee");
-          break;
-        case 7:
           this.showModal("catalogue/ModalContentAddCatalogue");
           break;
-        case 8:
+        case 7:
           this.showModal("catalogueItem/ModalContentAddCatalogueItem");
           break;
-        case 9:
+        case 8:
           this.showModal("itemProduct/ModalContentAddItemProduct");
           break;
       }
@@ -218,19 +218,19 @@ export default {
           this.showModal("supplier/ModalContentEditSupplier");
           this.setSupplier(row);
           break;
+        // case 6:
+        //   this.showModal("employee/ModalContentEditEmployee");
+        //   this.setEmployee(row);
+        //   break;
         case 6:
-          this.showModal("employee/ModalContentEditEmployee");
-          this.setEmployee(row);
-          break;
-        case 7:
           this.showModal("catalogue/ModalContentEditCatalogue");
           this.setCatalogue(row);
           break;
-        case 8:
+        case 7:
           this.showModal("catalogueItem/ModalContentEditCatalogueItem");
           this.setCatalogueItem(row);
           break;
-        case 9:
+        case 8:
           this.showModal("itemProduct/ModalContentEditItemProduct");
           this.setItemProduct(row);
           break;
@@ -262,19 +262,19 @@ export default {
           this.showModal("supplier/ModalContentDeleteSupplier");
           this.setSupplier(row);
           break;
+        // case 6:
+        //   this.showModal("employee/ModalContentDeleteEmployee");
+        //   this.setEmployee(row);
+        //   break;
         case 6:
-          this.showModal("employee/ModalContentDeleteEmployee");
-          this.setEmployee(row);
-          break;
-        case 7:
           this.showModal("catalogue/ModalContentDeleteCatalogue");
           this.setCatalogue(row);
           break;
-        case 8:
+        case 7:
           this.showModal("catalogueItem/ModalContentDeleteCatalogueItem");
           this.setCatalogueItem(row);
           break;
-        case 9:
+        case 8:
           this.showModal("itemProduct/ModalContentDeleteItemProduct");
           this.setItemProduct(row);
           break;
