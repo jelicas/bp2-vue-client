@@ -1,4 +1,5 @@
 # bp2-client
+Simple client interface created for manipulating database for purpose of testing integrity of database, implemented for course Databases 2, on Master on Faculty of organizational sciences.
 
 ## Project setup
 ```
